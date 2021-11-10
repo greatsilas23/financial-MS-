@@ -1,34 +1,34 @@
 <?php
-	include_once("conn.php")
-	$result = mysqli_query($conn, "SELECT * FROM regUsers");
+	include_once("conn.php");
 	$isIn = false;
-	if(isset($_POST['usrLogin'])){
+	if(isset($_POST['usrName'], $_POST['usrPass'])){
 		$i = 0;
-		while($row = mysqli_fetch_array($result){
+		while($row = mysqli_fetch_array($result)){
 			$usrName = $_POST['usrName'];
 			$usrPass = $_POST['usrPass'];
-			$regName = $row['name'];
-			$regpass = $row['pass']
-			if($usrName == $regName && $usrPass == $regPass){
-				isIn = true;
-				die("User Found");
+			$regName = mysqli_master_query($conn, "SELECT * FROM regUsers WHERE name = '".$usrName."'");
+			$regPass = mysqli_master_query($conn, "SELECT * FROM regUsers WHERE pass = '".$usrPass."'");
+			if($usrName = $regName && $usrPass = $regPass){
+				$isIn = true;
+?>
 				<script>
 					const loginForm = document.getElementById("usrLogin")
 					function authenticateUser(){
 						loginForm.style.display = "none"
 					}
 				</script>
+<?php
 			} else {
-				isIn = false;
-				die("Sorry, User Not Found");
+				$isIn = false;
+?>
 				<script>
 					const loginForm = document.getElementById("usrLogin")
 					function authenticateUser(){
-						loginForm.classList.add("shakeItem")
 						loginForm.style.backgroundColor = "red"
 						alert("Sorry, wrong username or password")
 					}
 				</script>
+<?php
 			}
 			$i++;
 		}

@@ -1,15 +1,13 @@
 <?php
-	$usr = "";
+	$usr = "root";
 	$server = "localhost";
-	$db = "";
-	$pass = "";
-	$conn = mysqli_connect($usr, $server, $db, $pass);
+	$db = "financialMS";
+	$pass = "secret";
+	$conn = mysqli_connect($server, $usr, $pass, $db);
 	if(!$conn){
-		die("Connection Failed");
-?>
-<div>
-	<p class="sqlConn">Failed To Connect to MySQL</p>	
-</div>
-<?php
+		echo '<div class="hideThis">'.'<p>'.'Connection Failed'.'</p>'.'</div>';
+	}
+	else {
+		echo '<div class="hideThis">'.'<p>'.'Connecteda Successfuly'.'</p>'.'</div>';
 	}
 ?>

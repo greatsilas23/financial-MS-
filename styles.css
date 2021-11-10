@@ -158,3 +158,11 @@ body
 	z-index: 1;
 	display: none;
 }
+.hideThis
+{
+	display: none;
+}
+.colorGreen
+{
+	background-color: green;
+}
