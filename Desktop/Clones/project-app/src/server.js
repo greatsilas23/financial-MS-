@@ -30,7 +30,7 @@ app.get('/feedback', function(req, res){
         res.send(result)
     })
 })
-app.get('/yourpage', function(req))
+
 client.connect(function(err){
     if(err){
         throw err
