@@ -16,19 +16,11 @@ app.post('/login', (req, res) => {
     let userPass = req.body.userPass
     let userRole = req.body.userRole
     client.query(`INSERT INTO demo(username, userpass, userrole) VALUES ('${userName}','${userPass}','${userRole}')`)
-    res.sendStatus(204)
-})
-app.get('/information', function(req,res){
-   client.query('SELECT * FROM demo', function(err, result){
-     if (err) throw err
-     res.send(result)
-   })
-})
-app.get('/feedback', function(req, res){
-    client.query('SELECT * FROM feedback', function(err, result){
+    client.query('SELECT * FROM demo', function(err, result, fields){
         if (err) throw err
-        res.send(result)
+        console.log(result.rows)
     })
+    res.sendStatus(204)
 })
 
 client.connect(function(err){
@@ -36,6 +28,10 @@ client.connect(function(err){
         throw err
     } else {
         console.log(`Connected!`)
+        client.query('SELECT * FROM demo', function(err, result, fields){
+            if (err) throw err
+            console.log(result.rows)
+        })
     }
 })
 app.listen(port, () => { console.log(`Listening on port ${port}`)})

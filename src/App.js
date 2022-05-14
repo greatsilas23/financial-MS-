@@ -87,7 +87,7 @@ class App extends React.Component {
         }
         {this.state.showContact &&
             <div style={styles.form}>
-                <div><img src={resources.basic_share} /></div>
+                <div><img src={resources.basic_server} /></div>
                 <div>
                 <form action="http://localhost:4000/feedback" method="GET">
                     <table style={{border: 'solid 2px #000'}} name="tbl" id="tbl">

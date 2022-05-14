@@ -8,10 +8,10 @@ export default function Navigation(props){
                 <img src={resources.basic_lock} alt="login"/>
             </div>
             <div onClick={props.handleAbout}>
-                <img src={resources.basic_info} alt="about" />
+                <img src={resources.basic_server} alt="about" />
             </div>
             <div onClick={props.handleContact}>
-                <img src={resources.basic_share} alt="contact-us" />
+                <img src={resources.basic_compass} alt="contact-us" />
             </div>
         </div>
     )
